@@ -11,9 +11,9 @@ export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  const name: string = String(req.query.name)
+  var name = req.query.name;
 
-  if (Object.keys(name).length === 0) {
+  if (name == undefined) {
     res
     .status(400)
     .send({
