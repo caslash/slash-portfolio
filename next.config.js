@@ -1,15 +1,6 @@
 /** @type {import('next').NextConfig} */
-// const nextConfig = {
-//   reactStrictMode: true,
-// }
-
-// module.exports = nextConfig
-module.exports = {
+const nextConfig = {
   reactStrictMode: true,
-  exportPathMap: async function (defaultPathMap) {
-    return {
-      '/': { page: '/' },
-      '/swagger': { page: '/swagger' },
-    };
-  }
-};
+}
+
+module.exports = nextConfig
