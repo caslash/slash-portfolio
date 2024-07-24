@@ -1,13 +1,10 @@
 /** @type {import('next').NextConfig} */
 
-module.export = {
-  webpack(config, { isServer }) {
-    config.resolve.fallback = {
-      ...config.resolve.fallback,
-      https: require.resolve('https-browserify'),
-      reactStrictMode: true
-    };
-
-    return config;
+module.exports = {
+  reactStrictMode: true,
+  resolve: {
+    alias: {
+      'swagger-ui-react': 'swagger-ui-react/dist/swagger-ui-react.js',
+    }
   }
 }
