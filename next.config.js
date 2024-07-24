@@ -1,10 +1,15 @@
 /** @type {import('next').NextConfig} */
+// const nextConfig = {
+//   reactStrictMode: true,
+// }
 
+// module.exports = nextConfig
 module.exports = {
   reactStrictMode: true,
-  resolve: {
-    alias: {
-      'swagger-ui-react': 'swagger-ui-react/dist/swagger-ui-react.js',
-    }
+  exportPathMap: async function (defaultPathMap) {
+    return {
+      '/': { page: '/' },
+      '/swagger': { page: '/swagger' },
+    };
   }
-}
+};
