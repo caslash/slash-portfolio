@@ -1,11 +1,12 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiRequest, NextApiResponse } from "next";
 
 /**
  * @swagger
  * components:
  *  schemas:
  *    HelloResponse:
+ *      description: Returned object of name and age
  *      type: object
  *      properties:
  *        name:
@@ -18,31 +19,33 @@ import type { NextApiRequest, NextApiResponse } from 'next'
  *          example: 24
  */
 type HelloResponse = {
-  name: string,
-  age: number
-}
+  name: string;
+  age: number;
+};
 
 /**
  * @swagger
  * /api/hello:
- *  get:
- *    description: Returns JSON object
- *    parameters:
- *      - in: query
- *        name: name
- *        description: Your name
- *        type: string
- *      - in: query
- *        name: age
- *        description: Your age
- *        type: integer
- *    responses:
- *      200:
- *        description: Returns HelloResponse object
- *        content:
- *          application/json:
- *            schema:
- *              $ref: '#/components/schemas/HelloResponse'
+ *   get:
+ *     summary: Returns JSON object
+ *     parameters:
+ *       - in: query
+ *         name: name
+ *         schema:
+ *           type: string
+ *         description: Your name
+ *       - in: query
+ *         name: age
+ *         schema:
+ *           type: integer
+ *         description: Your age
+ *     responses:
+ *       "200":
+ *         description: Returns HelloResponse object
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: "#/components/schemas/HelloResponse"
  */
 export default function handler(
   req: NextApiRequest,
@@ -52,6 +55,6 @@ export default function handler(
   const age = req.query.age as string;
   res.status(200).json({
     name: name,
-    age: Number(age)
-  })
+    age: Number(age),
+  });
 }
