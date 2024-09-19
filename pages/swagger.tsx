@@ -1,4 +1,3 @@
-import dynamic from "next/dynamic";
 import Head from "next/head";
 import "swagger-ui-react/swagger-ui.css";
 import SwaggerUI from "swagger-ui-react";
