@@ -1,3 +1,4 @@
+import SMSRequestBody from "@/models/smsRequestBody";
 import { NextApiRequest, NextApiResponse } from "next";
 
 /**
@@ -26,8 +27,10 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const auth = req.headers.authorization as string;
-  const messageText: string = req.body.messageText as string;
-  const phoneNumbers: Array<string> = req.body.phoneNumbers as Array<string>;
+  const smsRequestBody: SMSRequestBody = {
+    messageText: req.body.messageText as string,
+    phoneNumbers: req.body.phoneNumbers as Array<string>,
+  };
 
   const requestHeaders = new Headers();
   requestHeaders.append("Authorization", `App ${auth}`);
@@ -37,11 +40,11 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const requestBody: string = JSON.stringify({
     messages: [
       {
-        destinations: phoneNumbers.map((number) => {
+        destinations: smsRequestBody.phoneNumbers.map((number) => {
           return { to: number };
         }),
         from: "447491163443",
-        text: messageText,
+        text: smsRequestBody.messageText,
       },
     ],
   });

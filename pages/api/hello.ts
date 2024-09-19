@@ -1,27 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import HelloResponse from "@/models/helloResponse";
 import type { NextApiRequest, NextApiResponse } from "next";
-
-/**
- * @swagger
- * components:
- *  schemas:
- *    HelloResponse:
- *      description: Returned object of name and age
- *      type: object
- *      properties:
- *        name:
- *          type: string
- *          description: Your name
- *          example: Cameron
- *        age:
- *          type: integer
- *          description: Your age
- *          example: 24
- */
-type HelloResponse = {
-  name: string;
-  age: number;
-};
 
 /**
  * @swagger
