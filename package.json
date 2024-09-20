@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node --require ./swagger-build.js ./node_modules/.bin/next build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -13,7 +13,8 @@
     "next-swagger-doc": "^0.4.0",
     "react": "^18",
     "react-dom": "^18",
-    "swagger-ui-react": "^5.17.14"
+    "swagger-ui-react": "^5.17.14",
+    "undici": "^6.19.8"
   },
   "devDependencies": {
     "@types/node": "^20",
