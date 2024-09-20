@@ -44,7 +44,7 @@ export async function POST(req: NextRequest) {
         destinations: smsRequestBody.phoneNumbers.map((number) => {
           return { to: number };
         }),
-        from: "447491163443",
+        from: process.env.SMS_FROM_NUMBER,
         text: smsRequestBody.messageText,
       },
     ],
@@ -52,7 +52,7 @@ export async function POST(req: NextRequest) {
 
   let response;
 
-  await fetch("https://9krg5y.api.infobip.com/sms/2/text/advanced", {
+  await fetch(`https://${process.env.SMS_BASE_URL}/sms/2/text/advanced`, {
     method: "POST",
     headers: requestHeaders,
     body: requestBody,
