@@ -1,6 +1,5 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import HelloResponse from "@/models/helloResponse";
-import type { NextApiRequest, NextApiResponse } from "next";
+import { NextRequest, NextResponse } from "next/server";
 
 /**
  * @swagger
@@ -26,14 +25,13 @@ import type { NextApiRequest, NextApiResponse } from "next";
  *             schema:
  *               $ref: "#/components/schemas/HelloResponse"
  */
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<HelloResponse>
-) {
-  const name = req.query.name as string;
-  const age = req.query.age as string;
-  res.status(200).json({
-    name: name,
-    age: Number(age),
-  });
+export async function GET(req: NextRequest) {
+  const { searchParams } = req.nextUrl;
+
+  const responseObject: HelloResponse = {
+    name: searchParams.get("name") as string,
+    age: Number(searchParams.get("age") as string),
+  };
+
+  return NextResponse.json(responseObject, { status: 200 });
 }

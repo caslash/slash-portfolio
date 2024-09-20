@@ -1,5 +1,5 @@
 import SMSRequestBody from "@/models/smsRequestBody";
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextRequest, NextResponse } from "next/server";
 
 /**
  * @swagger
@@ -24,12 +24,13 @@ import { NextApiRequest, NextApiResponse } from "next";
  *       "201":
  *         description: Successfully sent SMS message
  */
+export async function POST(req: NextRequest) {
+  const auth = req.headers.get("Authorization") as string;
+  const body = await req.json();
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  const auth = req.headers.authorization as string;
   const smsRequestBody: SMSRequestBody = {
-    messageText: req.body.messageText as string,
-    phoneNumbers: req.body.phoneNumbers as Array<string>,
+    messageText: body.messageText,
+    phoneNumbers: body.phoneNumbers,
   };
 
   const requestHeaders = new Headers();
@@ -49,15 +50,20 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     ],
   });
 
-  fetch("https://9krg5y.api.infobip.com/sms/2/text/advanced", {
+  let response;
+
+  await fetch("https://9krg5y.api.infobip.com/sms/2/text/advanced", {
     method: "POST",
     headers: requestHeaders,
     body: requestBody,
     redirect: "follow",
   })
-    .then((response) => {
-      if (response.ok) res.status(201).json({});
-      else res.status(response.status).json(response.json());
+    .then((res) => {
+      response = res;
     })
     .catch((error) => console.log(error));
+
+  return NextResponse.json(response!.json(), {
+    status: response!.status,
+  });
 }
