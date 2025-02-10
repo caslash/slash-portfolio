@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "./node_modules/.bin/next lint && node --require ./swagger-build.js ./node_modules/.bin/next build",
+    "build": "jest --config=jest.lint.config.ts && node --require ./swagger-build.js ./node_modules/.bin/next build",
     "start": "next start",
     "lint": "jest --config=jest.lint.config.ts"
   },
