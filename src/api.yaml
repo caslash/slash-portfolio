@@ -1,0 +1,40 @@
+openapi: "3.0.0"
+info:
+  title: Cameron Slash API
+  version: "1.0"
+paths:
+  /api/hello:
+    get:
+      summary: Returns JSON object
+      parameters:
+        - in: query
+          name: name
+          schema:
+            type: string
+          description: Your name
+        - in: query
+          name: age
+          schema:
+            type: integer
+          description: Your age
+      responses:
+        "200":
+          description: Returns HelloResponse object
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HelloResponse"
+components:
+  schemas:
+    HelloResponse:
+      description: Returned object of name and age
+      type: object
+      properties:
+        name:
+          type: string
+          description: Your name
+          example: Cameron
+        age:
+          type: integer
+          description: Your age
+          example: 24
