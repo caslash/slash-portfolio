@@ -1,5 +1,5 @@
-import HelloResponse from "@/models/helloResponse";
-import { NextRequest, NextResponse } from "next/server";
+import HelloResponse from '@/models/helloResponse';
+import { NextRequest, NextResponse } from 'next/server';
 
 /**
  * @swagger
@@ -29,8 +29,8 @@ export async function GET(req: NextRequest) {
   const { searchParams } = req.nextUrl;
 
   const responseObject: HelloResponse = {
-    name: searchParams.get("name") as string,
-    age: Number(searchParams.get("age") as string),
+    name: searchParams.get('name') as string,
+    age: Number(searchParams.get('age') as string),
   };
 
   return NextResponse.json(responseObject, { status: 200 });
