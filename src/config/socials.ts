@@ -1,8 +1,11 @@
+import { IconSvgProps } from '@/components/icons/iconsvgprops';
+import { GitHubIcon, LinkedInIcon } from '@/components/icons/socials';
+
 export type SocialsConfig = typeof socialsConfig;
 
 type SocialItem = {
   name: string;
-  icon: string;
+  icon: (props?: IconSvgProps) => JSX.Element;
   href: string;
 };
 
@@ -10,18 +13,13 @@ export const socialsConfig: { socials: SocialItem[] } = {
   socials: [
     {
       name: 'Github',
-      icon: '/github',
+      icon: GitHubIcon,
       href: 'https://github.com/caslash',
-    },
-    {
-      name: 'Bluesky',
-      icon: '/bluesky',
-      href: 'https://bsky.app/profile/sashringing.caslash.dev',
     },
     {
       name: 'LinkedIn',
-      icon: '/linkedin',
-      href: 'https://github.com/caslash',
+      icon: LinkedInIcon,
+      href: 'https://www.linkedin.com/in/cameron-slash',
     },
   ],
 };

@@ -20,12 +20,21 @@ export default function PortfolioNavbar() {
 
   return (
     <Navbar maxWidth="full" position="static">
-      <NavbarBrand className="">
-        {socialsConfig.socials.map((item) => (
-          <Button key={item.name} href={item.href} isIconOnly>
-            <>{item.icon}</>
-          </Button>
-        ))}
+      <NavbarBrand>
+        <div className="flex flex-row gap-x-4">
+          {socialsConfig.socials.map((item) => (
+            <Button
+              as={NextLink}
+              key={item.name}
+              href={item.href}
+              variant="light"
+              radius="lg"
+              isIconOnly
+            >
+              {item.icon()}
+            </Button>
+          ))}
+        </div>
       </NavbarBrand>
       <NavbarContent justify="center">
         <ul className="flex gap-4 justify-start ml-2">

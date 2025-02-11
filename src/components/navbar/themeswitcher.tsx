@@ -3,7 +3,7 @@
 import { Button } from '@heroui/react';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
-import { FaMoon, FaSun } from 'react-icons/fa6';
+import { MoonIcon, SunIcon } from '../icons/themes';
 
 export default function ThemeSwitcher() {
   const [mounted, setMounted] = useState(false);
@@ -19,7 +19,7 @@ export default function ThemeSwitcher() {
 
   return (
     <Button onPress={updateTheme} variant="light" radius="lg" isIconOnly>
-      {theme == 'dark' ? <FaMoon /> : <FaSun />}
+      {theme == 'dark' ? <MoonIcon /> : <SunIcon />}
     </Button>
   );
 }
