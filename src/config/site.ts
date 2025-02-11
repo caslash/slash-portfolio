@@ -15,11 +15,11 @@ export const siteConfig: { name: string; description: string; navItems: NavItem[
     },
     {
       label: 'Projects',
-      href: '/projects'
+      href: '/projects',
     },
     {
       label: 'Blog',
-      href: '/blog'
-    }
+      href: '/blog',
+    },
   ],
 };
