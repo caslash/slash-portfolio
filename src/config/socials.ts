@@ -1,24 +1,25 @@
-import { IconSvgProps } from '@/components/icons/iconsvgprops';
-import { GitHubIcon, LinkedInIcon } from '@/components/icons/socials';
+// import { GitHubIcon, LinkedInIcon } from '@/components/icons/socials';
+import { Github, Linkedin, LucideProps } from 'lucide-react';
+import { ForwardRefExoticComponent, RefAttributes } from 'react';
 
 export type SocialsConfig = typeof socialsConfig;
 
 type SocialItem = {
   name: string;
-  icon: (props?: IconSvgProps) => JSX.Element;
+  icon: ForwardRefExoticComponent<Omit<LucideProps, 'ref'> & RefAttributes<SVGSVGElement>>;
   href: string;
 };
 
 export const socialsConfig: { socials: SocialItem[] } = {
   socials: [
     {
-      name: 'Github',
-      icon: GitHubIcon,
+      name: 'GitHub',
+      icon: Github,
       href: 'https://github.com/caslash',
     },
     {
       name: 'LinkedIn',
-      icon: LinkedInIcon,
+      icon: Linkedin,
       href: 'https://www.linkedin.com/in/cameron-slash',
     },
   ],

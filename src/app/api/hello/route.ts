@@ -1,4 +1,4 @@
-import HelloResponse from '@/models/helloResponse';
+import HelloResponse from '@/models/api/helloResponse';
 import { NextRequest, NextResponse } from 'next/server';
 
 /**
