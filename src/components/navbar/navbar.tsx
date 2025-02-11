@@ -2,7 +2,15 @@
 
 import ThemeSwitcher from '@/components/navbar/themeswitcher';
 import { siteConfig } from '@/config/site';
-import { link as linkStyles, Navbar, NavbarBrand, NavbarContent, NavbarItem } from '@heroui/react';
+import { socialsConfig } from '@/config/socials';
+import {
+  Button,
+  link as linkStyles,
+  Navbar,
+  NavbarBrand,
+  NavbarContent,
+  NavbarItem,
+} from '@heroui/react';
 import clsx from 'clsx';
 import NextLink from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -12,7 +20,13 @@ export default function PortfolioNavbar() {
 
   return (
     <Navbar maxWidth="full" position="static">
-      <NavbarBrand />
+      <NavbarBrand className="">
+        {socialsConfig.socials.map((item) => (
+          <Button key={item.name} href={item.href} isIconOnly>
+            <>{item.icon}</>
+          </Button>
+        ))}
+      </NavbarBrand>
       <NavbarContent justify="center">
         <ul className="flex gap-4 justify-start ml-2">
           {siteConfig.navItems.map((item) => (

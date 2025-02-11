@@ -1,9 +1,9 @@
 'use client';
 
-import { MoonIcon, SunIcon } from '@/icons/themes';
-import { Switch } from '@heroui/react';
+import { Button } from '@heroui/react';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
+import { FaMoon, FaSun } from 'react-icons/fa6';
 
 export default function ThemeSwitcher() {
   const [mounted, setMounted] = useState(false);
@@ -13,19 +13,13 @@ export default function ThemeSwitcher() {
 
   if (!mounted) return null;
 
-  const updateTheme = (isSelected: boolean) => {
-    setTheme(isSelected ? 'dark' : 'light');
+  const updateTheme = () => {
+    setTheme(theme == 'dark' ? 'light' : 'dark');
   };
 
   return (
-    <Switch
-      color="default"
-      size="lg"
-      isSelected={theme === 'dark'}
-      onValueChange={updateTheme}
-      thumbIcon={({ isSelected, className }) =>
-        isSelected ? <MoonIcon className={className} /> : <SunIcon className={className} />
-      }
-    />
+    <Button onPress={updateTheme} variant="light" radius="lg" isIconOnly>
+      {theme == 'dark' ? <FaMoon /> : <FaSun />}
+    </Button>
   );
 }
